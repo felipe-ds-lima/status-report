@@ -99,9 +99,9 @@
       window.projectName = saveTech.getItem("projectName");
       window.subdomain = saveTech.getItem("subdomain");
       window.baseUrl = `https://${subdomain}.atlassian.net/rest`;
-      if (window.location.hostname === "localhost") {
-        window.baseUrl = "https://cors-anywhere.herokuapp.com/" + baseUrl;
-      }
+      // if (window.location.hostname === "localhost") {
+      window.baseUrl = "https://cors-anywhere.herokuapp.com/" + baseUrl;
+      // }
       window.logoImage = saveTech.getItem("logoImage");
       window.appBackColor = saveTech.getItem("appBackColor");
       window.appTextColor = saveTech.getItem("appTextColor");
