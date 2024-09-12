@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status Report</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="login-page">
+    <main id="login">
+      <div class="row title">
+        <h1>Configuração</h1>
+        <div class="checkbox">
+          <input type="checkbox" name="save-config" id="save-config" />
+          <label for="save-config">Manter configurações</label>
+        </div>
+      </div>
+      <form id="login-form">
+        <label for="project-name">Nome do projeto</label>
+        <input
+          type="text"
+          placeholder="Nome do projeto"
+          id="project-name"
+          name="project-name"
+          required
+        />
+        <label for="subdomain">Subdomínio</label>
+        <input
+          type="text"
+          placeholder="Subdomínio 'https://<subdomínio>.atlassian.net'"
+          id="subdomain"
+          name="subdomain"
+          required
+        />
+        <label for="username">E-mail</label>
+        <input
+          type="text"
+          placeholder="Seu e-mail"
+          id="username"
+          name="username"
+          required
+        />
+        <label for="api-token">Token de API</label>
+        <input
+          type="password"
+          placeholder="Sua chave de API"
+          id="api-token"
+          name="api-token"
+          required
+        />
+        <label for="board-id">ID do Board</label>
+        <input
+          type="text"
+          placeholder="O ID do seu quadro '/jira/software/projects/<chave>/boards/<id>'"
+          id="board-id"
+          name="board-id"
+          required
+        />
+        <label for="project-key">Chave do Projeto</label>
+        <input
+          type="text"
+          placeholder="A chave do seu projeto '/jira/software/projects/<chave>'"
+          id="project-key"
+          name="project-key"
+          required
+        />
+        <label for="logo-image">Logo</label>
+        <input type="file" name="logo-image" id="logo-image" />
+        <div class="row">
+          <div class="col">
+            <label for="app-back-color">Cor de fundo</label>
+            <input
+              type="color"
+              name="app-back-color"
+              id="app-back-color"
+              value="#eeeeee"
+            />
+          </div>
+          <div class="col">
+            <label for="app-text-color">Cor do texto</label>
+            <input
+              type="color"
+              name="app-text-color"
+              id="app-text-color"
+              value="#333333"
+            />
+          </div>
+          <div class="col">
+            <label for="app-primary-color">Cor primária</label>
+            <input
+              type="color"
+              name="app-primary-color"
+              id="app-primary-color"
+              value="#3a86ff"
+            />
+          </div>
+          <div class="col">
+            <label for="app-secondary-color">Cor secundária</label>
+            <input
+              type="color"
+              name="app-secondary-color"
+              id="app-secondary-color"
+              value="#eeeeee"
+            />
+          </div>
+          <div class="col">
+            <label for="menu-back-color">Cor de fundo (menu)</label>
+            <input
+              type="color"
+              name="menu-back-color"
+              id="menu-back-color"
+              value="#333333"
+            />
+          </div>
+          <div class="col">
+            <label for="menu-text-color">Cor do texto (menu)</label>
+            <input
+              type="color"
+              name="menu-text-color"
+              id="menu-text-color"
+              value="#ffffff"
+            />
+          </div>
+        </div>
+
+        <button type="submit">Entrar</button>
+      </form>
+    </main>
+
+    <script>
+      // window.baseUrl = `https://${sessionStorage.getItem(
+      //   "subdomain"
+      // )}.atlassian.net/rest`;
+      // if (window.location.hostname === "localhost") {
+      //   window.baseUrl =
+      //     "https://cors-anywhere.herokuapp.com/" + window.baseUrl;
+      // }
+      // window.username = sessionStorage.getItem("username");
+      // window.boardId = sessionStorage.getItem("boardId");
+      // window.projectKey = sessionStorage.getItem("projectKey");
+      // window.apiToken = sessionStorage.getItem("apiToken");
+      // window.authKey = btoa(`${username}:${apiToken}`);
+    </script>
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status Report - White Lable</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header id="header">
+      <div class="logo"></div>
+
+      <div class="tasks-container">
+        <div class="task-percent">
+          <div class="chart"></div>
+          <p>
+            Tarefas <span class="sprint-name"></span>:
+            <span class="sprint-tasks sprint-task-count"></span>
+          </p>
+        </div>
+        <div class="task-percent">
+          <div class="chart"></div>
+          <p>
+            Porcentagem:
+            <span class="sprint-tasks sprint-task-concluded"></span>
+          </p>
+        </div>
+        <div class="task-percent">
+          <div class="chart"></div>
+          <p>
+            Tarefas Total: <span class="sprint-tasks total-task-count"></span>
+          </p>
+        </div>
+        <div class="task-percent">
+          <div class="chart"></div>
+          <p>
+            Porcentagem: <span class="sprint-tasks total-task-concluded"></span>
+          </p>
+        </div>
+      </div>
+    </header>
+    <aside id="menu">
+      <div class="sprint-buttons"></div>
+      <button type="button" class="update-button">Atualizar</button>
+    </aside>
+    <main id="main">
+      <div class="chart-list">
+        <div class="chart-row">
+          <div class="chart-container">
+            <canvas id="sprint-status-chart"></canvas>
+          </div>
+          <div class="chart-container">
+            <canvas id="total-status-chart"></canvas>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-container">
+            <canvas id="sprint-task-for-dev"></canvas>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-container">
+            <canvas id="sprint-task-for-env"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="task-list"></div>
+    </main>
+
+    <script>
+      const saveTech =
+        localStorage.getItem("saveConfig") === "true"
+          ? localStorage
+          : sessionStorage;
+      window.projectName = saveTech.getItem("projectName");
+      window.subdomain = saveTech.getItem("subdomain");
+      window.baseUrl = `https://${subdomain}.atlassian.net/rest`;
+      if (window.location.hostname === "localhost") {
+        window.baseUrl = "https://cors-anywhere.herokuapp.com/" + baseUrl;
+      }
+      window.logoImage = saveTech.getItem("logoImage");
+      window.appBackColor = saveTech.getItem("appBackColor");
+      window.appTextColor = saveTech.getItem("appTextColor");
+      window.appPrimaryColor = saveTech.getItem("appPrimaryColor");
+      window.appSecondaryColor = saveTech.getItem("appSecondaryColor");
+      window.menuBackColor = saveTech.getItem("menuBackColor");
+      window.menuTextColor = saveTech.getItem("menuTextColor");
+
+      window.username = saveTech.getItem("username");
+      window.boardId = saveTech.getItem("boardId");
+      window.projectKey = saveTech.getItem("projectKey");
+      window.apiToken = saveTech.getItem("apiToken");
+      window.authKey = btoa(`${username}:${apiToken}`);
+    </script>
+    <script src="./report.js"></script>
+  </body>
+</html>

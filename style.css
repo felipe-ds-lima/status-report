@@ -1,0 +1,222 @@
+:root {
+    font-size: 62.5%;
+    --menu-back-color: #333;
+    --menu-text-color: #fff;
+    --app-back-color: #eee;
+    --app-text-color: #333;
+    --button-back-color: #eee;
+    --button-text-color: #333;
+    --button-hover-back-color: #bbb;
+    --button-hover-text-color: #111;
+    --primary-color: #3a86ff;
+    --logo-url: url(./logo.png);
+}
+
+*, 
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-optical-sizing: auto;
+}
+body {
+    font-size: 1.6rem;
+    list-style-type: none;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-areas: 'header header' 'menu main';
+    grid-template-rows: 9.6rem 1fr;
+    grid-template-columns: 30rem 1fr;
+    background-color: var(--menu-back-color);
+    color: var(--menu-text-color);
+    font-family: "Nunito", sans-serif;
+}
+body.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* LOGIN */
+#login {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 60rem;
+    max-height: 90vh;
+    overflow: auto;
+    padding: 2.4rem;
+    background-color: var(--app-back-color);
+    color: var(--app-text-color);
+    border-radius: 2.4rem;
+}
+#login form {
+    display: flex;
+    flex-direction: column;
+}
+#login form label{
+    margin-top: 1.6rem;
+}
+#login form input{
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    border-radius: 0.8rem;
+    border: 1px solid #333;
+}
+#login form  input[type="color"] {
+    padding: 0;
+    border: none;
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 0.8rem;
+}
+
+#login form button {
+    margin-top: 1.6rem;
+    padding: 1.6rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 0.8rem;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--menu-text-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+#login .row {
+    display: flex;
+}
+#login .row.title {
+    align-items: center;
+    justify-content: space-between;
+}
+#login .row .col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1.6rem;
+    text-align: center;
+    text-wrap: wrap;
+}
+
+/* HEADER */
+#header {
+    grid-area: header;
+    display: flex;
+}
+#header .logo {
+    font-size: 3.2rem;
+    width: 30rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#header .tasks-container {
+    flex: 1;
+    display: flex;
+}
+#header .task-percent {
+    flex: 1;
+    margin: 1.6rem;
+    background-color: var(--app-back-color);
+    color: var(--app-text-color);
+    border-radius: 1.6rem;
+    display: flex;
+    align-items: center;
+    padding: .8rem;
+}
+#header .task-percent .chart {
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background-color: #333;
+    margin: 0 1.6rem 0 0;
+}
+
+#header .task-percent p {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+#header .task-percent p .sprint-tasks {
+    color: var(--primary-color)
+}
+
+/* MENU */
+#menu {
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem;
+}
+#menu #sprint-select {
+    font-size: 1.8rem;
+    padding: 1.6rem;
+    border-radius: 1.6rem;
+}
+#menu .sprint-buttons {
+    display: flex;
+    flex-direction: column;
+}
+#menu .update-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.6rem;
+    font-size: 1.8rem;
+    border-radius: 1.6rem;
+    border: none;
+    margin-top: 3.2rem;
+    background-color: var(--button-back-color);
+    color: var(--button-text-color);
+    transition: all 0.2s;
+    cursor: pointer;
+    opacity: 0.6;
+}
+#menu .update-button.active {
+    background-color: var(--primary-color);
+    color: var(--menu-text-color);
+    opacity: 1;
+}
+#menu .update-button:hover {
+    background-color: var(--button-hover-back-color);
+    color: var(--button-hover-text-color);
+    opacity: 1;
+}
+
+/* MAIN */
+#main {
+    grid-area: main;
+    display: flex;
+    overflow: hidden;
+    border-radius: 3.2rem 0 0 0;
+    background-color: var(--app-back-color);
+    color: var(--app-text-color);
+}
+
+#main .chart-list {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 3.2rem;
+}
+#main .task-list {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#main .chart-row {
+    display: flex;
+}
+#main .chart-row .chart-container {
+    flex: 1;
+    display: block;
+}
