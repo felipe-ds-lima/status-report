@@ -314,6 +314,7 @@ async function getSprints() {
     const data = await response.json();
 
     for (let i = 0; i < data.values.length; i++) {
+        const sprint = data.values[i];
         if (sprint.state == "active") {
             currentSprintId = sprint.id;
         }
