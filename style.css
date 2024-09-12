@@ -212,6 +212,27 @@ body.login-page {
     flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 3.2rem;
+
+}
+#main .task-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#main .task-list table th {
+    background-color: var(--primary-color);
+    color: var(--menu-text-color);
+    padding: 1.6rem;
+    text-align: left;
+}
+#main .task-list table tr {
+    border: 1px solid #333;
+}
+#main .task-list table td {
+    text-align: left;
+    padding: 1.6rem;
 }
 #main .chart-row {
     display: flex;

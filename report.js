@@ -233,6 +233,18 @@ function mountTotalTaskForEnv() {
     });
 }
 
+function mountTasksTable() {
+    const table = document.querySelector("#task-list-table");
+    const tbody = table.querySelector("tbody");
+    tbody.innerHTML = "";
+    for (let i = 0; i < sprintTasks.length; i++) {
+        const task = sprintTasks[i];
+        const trEl = document.createElement("tr");
+        trEl.innerHTML = `<td>${task.fields.summary}</td><td>${task.fields.assignee.displayName}</td><td>${task.fields.status.name}</td>`
+        tbody.appendChild(trEl);
+    }
+}
+
 function buildTopBar() {
     const sprintNameEl = document.querySelector(".sprint-name");
     sprintNameEl.innerHTML = currentSprint.name;
@@ -373,6 +385,7 @@ function buildScreen() {
     buildMenu();
     buildTopBar();
     updateCharts();
+    mountTasksTable();
 }
 
 async function main() {
