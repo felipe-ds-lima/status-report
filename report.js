@@ -120,14 +120,14 @@ function mountSprintTaskForDev() {
     const data = {}
     for (let i = 0; i < sprintTasks.length; i++) {
         const task = sprintTasks[i];
-        const name = task.fields.assignee.displayName.split(' ')[0];
+        const name = task.fields.assignee?.displayName?.split(' ')[0] || 'Não atribuído'
         if (!data[name]) {
             data[name] = {};
         }
     }
     for (let i = 0; i < sprintTasks.length; i++) {
         const task = sprintTasks[i];
-        const name = task.fields.assignee.displayName.split(' ')[0];
+        const name = task.fields.assignee?.displayName?.split(' ')[0] || 'Não atribuído'
         if (!data[name][task.fields.status.name]) {
             data[name][task.fields.status.name] = 1;
         } else {
@@ -240,7 +240,7 @@ function mountTasksTable() {
     for (let i = 0; i < sprintTasks.length; i++) {
         const task = sprintTasks[i];
         const trEl = document.createElement("tr");
-        trEl.innerHTML = `<td>${task.fields.summary}</td><td>${task.fields.assignee.displayName}</td><td>${task.fields.status.name}</td>`
+        trEl.innerHTML = `<td>${task.fields.summary}</td><td>${task.fields.assignee?.displayName || 'Não atribuído'}</td><td>${task.fields.status.name}</td>`
         tbody.appendChild(trEl);
     }
 }
