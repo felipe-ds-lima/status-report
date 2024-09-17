@@ -7,6 +7,7 @@ let sprintStatusChart = null;
 let totalStatusChart = null;
 let sprintTaskForDev = null;
 let totalTaskForEnv = null;
+let isDev = location.host.includes('localhost')
 
 onStart = () => {
     if (localStorage.getItem("saveConfig") === "true" && !localStorage.getItem('apiToken')) {
@@ -287,7 +288,7 @@ async function changeCurrentSprint(sprintId) {
 }
 
 async function getSprints() {
-    if (localStorage.getItem('sprints')) {
+    if (isDev && localStorage.getItem('sprints')) {
         sprints = JSON.parse(localStorage.getItem('sprints'));
         for (let i = 0; i < sprints.length; i++) {
             if (sprints[i].state == "active") {
@@ -345,7 +346,7 @@ async function getSprints() {
 }
 
 async function getAllTasks() {
-    if (localStorage.getItem('allTasks')) {
+    if (isDev && localStorage.getItem('allTasks')) {
         allTasks = JSON.parse(localStorage.getItem('allTasks'));
         return;
     }
