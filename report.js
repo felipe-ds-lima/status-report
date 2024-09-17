@@ -275,7 +275,7 @@ async function changeCurrentSprint(sprintId) {
     currentSprint = sprints.find(sprint => sprint.id === sprintId);
 
     for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i].fields.sprint?.id === sprintId || allTasks[i].fields.closedSprints[0]?.id) {
+        if (allTasks[i].fields.sprint?.id === sprintId || allTasks[i].fields.closedSprints && allTasks[i].fields.closedSprints[0] && allTasks[i].fields.closedSprints[0].id === sprintId) {
             sprintTasks.push(allTasks[i]);
         }
     }
