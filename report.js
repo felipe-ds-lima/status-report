@@ -301,16 +301,32 @@ async function getSprints() {
                 break;
             }
         }
+        if (!currentSprintId) {
+            for (let i = 0; i < sprints.length; i++) {
+                if (sprints[i].state == "closed") {
+                    currentSprintId = sprints[i].id;
+                }
+            }
+        }
+        if (!currentSprintId && sprints.length) {
+            currentSprintId = sprints[0].id
+        }
         return;
     }
-
-    const response = await fetch(`${baseUrl}/agile/1.0/board/${boardId}/sprint`, {
-        headers: {
-            "Authorization": `Basic ${authKey}`,
-            "Accept": "application/json",
-            "Content-Type": "application/json;charset=UTF-8"
-        },
-    });
+    let response;
+    try {
+        response = await fetch(`${baseUrl}/agile/1.0/board/${boardId}/sprint`, {
+            headers: {
+                "Authorization": `Basic ${authKey}`,
+                "Accept": "application/json",
+                "Content-Type": "application/json;charset=UTF-8"
+            },
+        });
+    } catch (error) {
+        console.error(error);
+        alert("Erro ao buscar sprints, tente acessar o site: https://cors-anywhere.herokuapp.com/corsdemo e solicite acesso.");
+        return;
+    }
     const data = await response.json();
 
     for (let i = 0; i < data.values.length; i++) {
@@ -319,6 +335,16 @@ async function getSprints() {
             currentSprintId = sprint.id;
         }
         sprints.push(data.values[i]);
+    }
+    if (!currentSprintId) {
+        for (let i = 0; i < sprints.length; i++) {
+            if (sprints[i].state == "closed") {
+                currentSprintId = sprints[i].id;
+            }
+        }
+    }
+    if (!currentSprintId && sprints.length) {
+        currentSprintId = sprints[0].id
     }
 
     localStorage.setItem('sprints', JSON.stringify(sprints));
