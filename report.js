@@ -274,17 +274,11 @@ async function changeCurrentSprint(sprintId) {
     currentSprintId = sprintId;
     currentSprint = sprints.find(sprint => sprint.id === sprintId);
 
-    for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i].fields.sprint?.id === sprintId || allTasks[i].fields.closedSprints && allTasks[i].fields.closedSprints[0] && allTasks[i].fields.closedSprints[0].id === sprintId) {
-            sprintTasks.push(allTasks[i]);
-        }
-    }
-
     sprintTasks = []
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
 
-        if (task.fields.sprint?.id === sprintId) {
+        if (task.fields.sprint?.id === sprintId || task.fields.closedSprints && task.fields.closedSprints[0] && task.fields.closedSprints[0].id === sprintId) {
             sprintTasks.push(task);
         }
     }
