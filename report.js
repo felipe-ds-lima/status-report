@@ -264,11 +264,11 @@ function buildTopBar() {
     const sprintTaskCountEl = document.querySelector(".sprint-task-count");
     sprintTaskCountEl.innerHTML = sprintTaskCount;
     const sprintTaskConcludedEl = document.querySelector(".sprint-task-concluded");
-    sprintTaskConcludedEl.innerHTML = sprintTaskConcludedPercent + "%";
+    sprintTaskConcludedEl.innerHTML = sprintTaskConcludedPercent.toFixed(2) + "%";
     const totalTaskCountEl = document.querySelector(".total-task-count");
     totalTaskCountEl.innerHTML = totalTaskCount;
     const totalTaskConcludedEl = document.querySelector(".total-task-concluded");
-    totalTaskConcludedEl.innerHTML = totalTaskConcludedPercent + "%";
+    totalTaskConcludedEl.innerHTML = totalTaskConcludedPercent.toFixed(2) + "%";
 }
 
 async function changeCurrentSprint(sprintId) {
